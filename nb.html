@@ -60,10 +60,13 @@
         <li>Søk/skanning via Open Food Facts (se avsnitt 8).</li>
         <li>Kryptert lokal sikkerhetskopi (.avena) som du selv eksporterer og gjenoppretter.</li>
         <li>Sletting / wipe av lokale data i appen.</li>
+        <li>Valgfri tilkobling til Health Connect for <strong>lesing av treningsøkter</strong>
+          (<code>READ_EXERCISE</code>) og <strong>manuell import</strong> av én valgt økt om gangen
+          (se avsnitt 5).</li>
       </ul>
       <p>
-        <strong>Health Connect Live-lesing og -import er ikke aktivert</strong> i den vanlige appversjonen
-        som beskrives her. Eventuell senere aktivering er beskrevet i avsnitt 5.
+        Skrittlesing, vektlesing fra Health Connect og automatisk treningsimport er
+        <strong>ikke</strong> aktivert i denne versjonen.
       </p>
     </section>
 
@@ -96,9 +99,10 @@
               <td>Lokalt</td>
             </tr>
             <tr>
-              <td>Health Connect (valgfritt, senere aktivering)</td>
-              <td>Treningsøkter, skritt og/eller vekt — kun etter tilkobling og tillatelse</td>
-              <td>Lesing via Health Connect; lagring kun der funksjonen er aktivert</td>
+              <td>Health Connect (valgfritt)</td>
+              <td>Treningsøkter du velger å importere (tidspunkt, varighet, aktivitetstype,
+                eventuell distanse, kilde-app). Skritt og HC-vekt forespørres ikke i denne versjonen.</td>
+              <td>Lesing via Health Connect; importerte økter lagres lokalt i treningshistorikk</td>
             </tr>
             <tr>
               <td>Sikkerhetskopi</td>
@@ -115,23 +119,35 @@
     </section>
 
     <section class="card" aria-labelledby="h-hc">
-      <h2 id="h-hc">5. Health Connect — nå vs. senere</h2>
+      <h2 id="h-hc">5. Health Connect</h2>
       <p>Tilkobling er frivillig og krever ikke konto i VictoryForm.</p>
 
       <h3>5.1 Status i vanlig app nå</h3>
       <ul>
-        <li>Live-lesing, forhåndsvisning og import via Health Connect er <strong>ikke aktivert</strong> for vanlig produksjonsbruk.</li>
-        <li>Prod-manifestet deklarerer foreløpig kun <code>READ_EXERCISE</code>; <code>READ_STEPS</code> og <code>READ_WEIGHT</code> er ikke lagt til i produksjonsmanifestet ennå.</li>
-        <li>Appen ber ikke om skrivetilgang til Health Connect og ber ikke om <code>ACTIVITY_RECOGNITION</code>.</li>
-        <li>Puls, GPS-ruter og andre HC-typer forespørres ikke.</li>
+        <li>Etter at du kobler til Health Connect kan VictoryForm be om
+          <strong>lesetilgang til treningsøkter</strong> (<code>READ_EXERCISE</code>).</li>
+        <li>«Se tilgjengelige økter» viser midlertidig hvilke økter som finnes. Ingenting lagres
+          bare fordi du blar i listen.</li>
+        <li>Du velger selv hvilken økt som skal importeres. Appen importerer
+          <strong>én</strong> økt per bekreftet handling — ikke flere samtidig.</li>
+        <li>Import skjer først etter din aktive bekreftelse.</li>
+        <li>Når en økt importeres, lagres følgende lokalt i treningshistorikken:
+          aktivitetstype (evt. din klassifisering), starttidspunkt, varighet,
+          eventuell distanse, at kilden er Health Connect-import, en ekstern identifikator
+          for deduplisering, og eventuelt pakkenavn for kilde-appen (f.eks. treningsappen
+          økten kommer fra). Appen finner ikke opp sett/reps, og ber ikke om puls eller GPS-rute.</li>
+        <li>Samme økt importeres ikke på nytt som duplikat (dedup via ekstern identifikator).</li>
+        <li>Prod-manifestet deklarerer foreløpig kun <code>READ_EXERCISE</code>.</li>
+        <li>Appen ber ikke om skrivetilgang til Health Connect og ber ikke om
+          <code>ACTIVITY_RECOGNITION</code>.</li>
       </ul>
 
-      <h3>5.2 Mulig senere aktivering</h3>
-      <p>Når funksjoner aktiveres i en senere appversjon (og denne erklæringen oppdateres), kan VictoryForm be om <strong>lesetilgang</strong> til:</p>
+      <h3>5.2 Ikke aktivert ennå</h3>
       <ul>
-        <li><strong>Treningsøkter (<code>READ_EXERCISE</code>)</strong> — vise tilgjengelige økter og, etter ditt aktive valg og bekreftelse, importere én økt om gangen. Ingen automatisk treningsimport ved appstart.</li>
-        <li><strong>Skritt (<code>READ_STEPS</code>)</strong> — vise dagens skrittotal automatisk etter at du har koblet til. Skritttall lagres ikke i appen.</li>
-        <li><strong>Kroppsvekt (<code>READ_WEIGHT</code>)</strong> — lese vektmålinger etter tilkobling for midlertidig visning. Automatisk lagring av HC-vekt i lokal historikk er <strong>ikke</strong> aktiv før en egen, separat aktivering.</li>
+        <li><strong>Skritt (<code>READ_STEPS</code>)</strong> — ikke forespurt i denne versjonen.</li>
+        <li><strong>Kroppsvekt (<code>READ_WEIGHT</code>)</strong> — ikke forespurt; automatisk lagring
+          av HC-vekt i lokal historikk er ikke aktiv.</li>
+        <li><strong>Automatisk treningsimport</strong> (uten ditt valg/bekreftelse) — ikke aktiv.</li>
       </ul>
       <p>
         Du kan koble fra i appen og/eller trekke tilbake tillatelser i systemets Health Connect-innstillinger.
@@ -175,8 +191,8 @@
           <a href="https://world.openfoodfacts.org/privacy" rel="noopener noreferrer">personvern</a>.</li>
       </ul>
       <p>
-        Når Health Connect senere aktiveres, leses data via plattform-API på enheten;
-        VictoryForm laster ikke opp HC-data til egne skytjenester i den planlagte flyten.
+        Når du bruker Health Connect for treningsøkter, leses data via plattform-API på enheten.
+        VictoryForm laster ikke opp Health Connect-data til egne skytjenester i den beskrevne flyten.
       </p>
       <p>Ingen annonse- eller analyse-SDK er del av den gjennomgåtte app-kjernen for denne erklæringen.</p>
     </section>

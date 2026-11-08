@@ -60,10 +60,13 @@
         <li>Search/scan via Open Food Facts (see section 8).</li>
         <li>Encrypted local backup (.avena) that you export and restore yourself.</li>
         <li>In-app wipe / deletion of local data.</li>
+        <li>Optional Health Connect connection for <strong>reading workout sessions</strong>
+          (<code>READ_EXERCISE</code>) and <strong>manual import</strong> of one selected session
+          at a time (see section 5).</li>
       </ul>
       <p>
-        <strong>Health Connect live reading and import are not enabled</strong> in the regular app
-        version described here. Any later activation is described in section 5.
+        Steps reading, Health Connect weight reading, and automatic workout import are
+        <strong>not</strong> enabled in this version.
       </p>
     </section>
 
@@ -96,9 +99,10 @@
               <td>On device</td>
             </tr>
             <tr>
-              <td>Health Connect (optional, later activation)</td>
-              <td>Exercise sessions, steps and/or weight — only after you connect and grant permission</td>
-              <td>Read via Health Connect; storage only where that feature is enabled</td>
+              <td>Health Connect (optional)</td>
+              <td>Workout sessions you choose to import (time, duration, activity type,
+                optional distance, source app). Steps and HC weight are not requested in this version.</td>
+              <td>Read via Health Connect; imported sessions stored locally in workout history</td>
             </tr>
             <tr>
               <td>Backup</td>
@@ -115,23 +119,36 @@
     </section>
 
     <section class="card" aria-labelledby="h-hc">
-      <h2 id="h-hc">5. Health Connect — now vs later</h2>
+      <h2 id="h-hc">5. Health Connect</h2>
       <p>Connecting is optional and does not require a VictoryForm account.</p>
 
       <h3>5.1 Status in the regular app now</h3>
       <ul>
-        <li>Health Connect live reading, browsing, and import are <strong>not enabled</strong> for regular production use.</li>
-        <li>The production manifest currently declares only <code>READ_EXERCISE</code>; <code>READ_STEPS</code> and <code>READ_WEIGHT</code> are not yet added to the production manifest.</li>
-        <li>The app does not request write access to Health Connect and does not request <code>ACTIVITY_RECOGNITION</code>.</li>
-        <li>Heart rate, GPS routes, and other HC types are not requested.</li>
+        <li>After you connect Health Connect, VictoryForm may request
+          <strong>read access to workout sessions</strong> (<code>READ_EXERCISE</code>).</li>
+        <li>“Browse available sessions” temporarily shows which sessions exist. Nothing is saved
+          merely because you browse the list.</li>
+        <li>You choose which session to import. The app imports
+          <strong>one</strong> session per confirmed action — not several at once.</li>
+        <li>Import happens only after your active confirmation.</li>
+        <li>When a session is imported, the following is stored locally in workout history:
+          activity type (or your classification), start time, duration, optional distance,
+          that the source is a Health Connect import, an external identifier used for
+          deduplication, and optionally the source app package name (e.g. the fitness app
+          the session came from). The app does not invent sets/reps and does not request
+          heart rate or a GPS route.</li>
+        <li>The same session is not imported again as a duplicate (dedup via external identifier).</li>
+        <li>The production manifest currently declares only <code>READ_EXERCISE</code>.</li>
+        <li>The app does not request write access to Health Connect and does not request
+          <code>ACTIVITY_RECOGNITION</code>.</li>
       </ul>
 
-      <h3>5.2 Possible later activation</h3>
-      <p>When features are enabled in a later app version (and this policy is updated), VictoryForm may request <strong>read</strong> access to:</p>
+      <h3>5.2 Not enabled yet</h3>
       <ul>
-        <li><strong>Exercise (<code>READ_EXERCISE</code>)</strong> — show available sessions and, after your active selection and confirmation, import one session at a time. No automatic workout import at app start.</li>
-        <li><strong>Steps (<code>READ_STEPS</code>)</strong> — show today’s step total automatically after you connect. Step totals are not stored in the app.</li>
-        <li><strong>Weight (<code>READ_WEIGHT</code>)</strong> — read weight samples after you connect for temporary display. Automatic saving of HC weight into local history is <strong>not</strong> active until a separate activation.</li>
+        <li><strong>Steps (<code>READ_STEPS</code>)</strong> — not requested in this version.</li>
+        <li><strong>Body weight (<code>READ_WEIGHT</code>)</strong> — not requested; automatic saving
+          of HC weight into local history is not active.</li>
+        <li><strong>Automatic workout import</strong> (without your selection/confirmation) — not active.</li>
       </ul>
       <p>
         You can disconnect in the app and/or revoke permissions in system Health Connect settings.
@@ -175,8 +192,8 @@
           <a href="https://world.openfoodfacts.org/privacy" rel="noopener noreferrer">privacy</a>.</li>
       </ul>
       <p>
-        When Health Connect is later enabled, data is read via the on-device platform API;
-        VictoryForm does not upload that data to its own cloud services in the planned flow.
+        When you use Health Connect for workout sessions, data is read via the on-device platform API.
+        VictoryForm does not upload Health Connect data to its own cloud services in the described flow.
       </p>
       <p>No advertising or analytics SDK is part of the reviewed app core for this policy.</p>
     </section>
