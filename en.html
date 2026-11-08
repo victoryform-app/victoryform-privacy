@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — VictoryForm</title>
+  <meta name="description" content="Privacy policy for VictoryForm, a local Android training and nutrition app." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <main id="content" class="wrap">
+    <header>
+      <nav class="lang" aria-label="Language">
+        <a href="nb.html" hreflang="nb">Norsk</a>
+        <a href="en.html" aria-current="page" hreflang="en">English</a>
+      </nav>
+      <p class="brand">VictoryForm</p>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Last updated: 8 November 2026</p>
+      <p class="meta">Public URL:
+        <a href="https://victoryform-app.github.io/victoryform-privacy/">https://victoryform-app.github.io/victoryform-privacy/</a>
+      </p>
+    </header>
+
+    <section class="card" aria-labelledby="h-controller">
+      <h2 id="h-controller">1. Controller</h2>
+      <p>
+        The controller is a private individual:
+        Eman Inbumallan,
+        Norway.
+      </p>
+      <p>
+        No company (e.g. limited company) or paid organisation is registered for the app at this time.
+        Privacy contact:
+        <a href="mailto:victoryform.app@gmail.com">victoryform.app@gmail.com</a>.
+      </p>
+      <p class="note">
+        A public street address is not required in this policy for the current setup.
+        Fill in the legal full name locally before publishing.
+        If a company is formed later, this policy will be updated with the new controller and contact details.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-what">
+      <h2 id="h-what">2. What the app is</h2>
+      <p>
+        VictoryForm is a local Android training and nutrition app.
+        You can log workouts, manual body weight, and food, and create encrypted backups.
+        Most data stays on your device. The app does not require an account.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-active">
+      <h2 id="h-active">3. What is active now</h2>
+      <p>In the regular app version described here, the following is active:</p>
+      <ul>
+        <li>Local workout logging (sessions, exercises, sets, manual activities).</li>
+        <li>Manual body weight with local history and chart.</li>
+        <li>Food diary, custom foods/recipes, and nutrients stored locally.</li>
+        <li>Search/scan via Open Food Facts (see section 8).</li>
+        <li>Encrypted local backup (.avena) that you export and restore yourself.</li>
+        <li>In-app wipe / deletion of local data.</li>
+      </ul>
+      <p>
+        <strong>Health Connect live reading and import are not enabled</strong> in the regular app
+        build at the time of this preparation, even though technical preparation exists for later
+        milestones (see section 5).
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-data">
+      <h2 id="h-data">4. Data we process</h2>
+      <div class="table-wrap" role="region" aria-label="Data categories" tabindex="0">
+        <table>
+          <thead>
+            <tr><th scope="col">Category</th><th scope="col">Examples</th><th scope="col">Storage</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Profile</td>
+              <td>Optional name, birth year, height, start weight, goals, units</td>
+              <td>On device</td>
+            </tr>
+            <tr>
+              <td>Training</td>
+              <td>Sessions, exercises, sets, duration, manual activities</td>
+              <td>On device</td>
+            </tr>
+            <tr>
+              <td>Body weight</td>
+              <td>Manual entries and chart</td>
+              <td>On device</td>
+            </tr>
+            <tr>
+              <td>Nutrition</td>
+              <td>Food diary, custom foods/recipes, nutrients</td>
+              <td>On device</td>
+            </tr>
+            <tr>
+              <td>Health Connect (optional, later activation)</td>
+              <td>Exercise sessions, steps and/or weight — only after you connect and grant permission</td>
+              <td>Read via Health Connect; storage only where that feature is enabled</td>
+            </tr>
+            <tr>
+              <td>Backup</td>
+              <td>Encrypted export file you choose to save or share</td>
+              <td>File you choose; temporary keys in secure device storage</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">
+        Android auto-backup is disabled. Soft-deleted items may remain stored locally until removed
+        per app rules.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-hc">
+      <h2 id="h-hc">5. Health Connect — now vs later</h2>
+      <p>Connecting is optional and does not require a VictoryForm account.</p>
+
+      <h3>5.1 Status in the regular app now</h3>
+      <ul>
+        <li>Health Connect live reading, browsing, and import are <strong>not enabled</strong> for regular production use.</li>
+        <li>The production manifest currently declares only <code>READ_EXERCISE</code>; <code>READ_STEPS</code> and <code>READ_WEIGHT</code> are not yet added to the production manifest.</li>
+        <li>The app does not request write access to Health Connect and does not request <code>ACTIVITY_RECOGNITION</code>.</li>
+        <li>Heart rate, GPS routes, and other HC types are not requested.</li>
+      </ul>
+
+      <h3>5.2 Prepared for later production milestones</h3>
+      <p>When features are enabled through separate milestones (and this policy is updated), VictoryForm may request <strong>read</strong> access to:</p>
+      <ul>
+        <li><strong>Exercise (<code>READ_EXERCISE</code>)</strong> — show available sessions and, after your active selection and confirmation, import one session at a time. No automatic workout import at app start.</li>
+        <li><strong>Steps (<code>READ_STEPS</code>)</strong> — show today’s step total automatically after you connect. Step totals are not stored in the app.</li>
+        <li><strong>Weight (<code>READ_WEIGHT</code>)</strong> — read weight samples after you connect for temporary display. Automatic saving of HC weight into local history is <strong>not</strong> active until a separate approval.</li>
+      </ul>
+      <p>
+        You can disconnect in the app and/or revoke permissions in system Health Connect settings.
+        New reading then stops. Local data already saved is not automatically deleted on disconnect.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-backup">
+      <h2 id="h-backup">6. Local storage, backup, deletion</h2>
+      <ul>
+        <li>Ordinary app data is stored locally on the device.</li>
+        <li>You can export an encrypted backup and restore it.</li>
+        <li>You can wipe local data using the in-app delete function.</li>
+        <li>Backup files you store outside the app are under your control.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="h-account">
+      <h2 id="h-account">7. Account, cloud, and paid services</h2>
+      <p>
+        Account sign-in, cloud sync, Premium subscriptions, and similar networked services are
+        <strong>not</strong> active features in the regular app version described here.
+        This policy will be updated before any such feature is enabled.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-third">
+      <h2 id="h-third">8. Transfers to servers and third parties</h2>
+      <p>
+        Training, weight, and food-diary data are not sent to VictoryForm’s own servers in the active
+        features described here.
+      </p>
+      <p><strong>Open Food Facts (when you search or scan):</strong></p>
+      <ul>
+        <li>Barcode lookup: the barcode is sent to <code>world.openfoodfacts.org</code> (product API) with requested fields and a descriptive User-Agent.</li>
+        <li>Text search: your query is sent to <code>search.openfoodfacts.org</code> with parameters such as page, page size, language preferences, and requested product fields.</li>
+        <li>A request may therefore include what you typed/scanned, technical HTTP headers (including User-Agent), and ordinary network metadata (e.g. IP address at the recipient).</li>
+        <li>The app does not use an API key for Open Food Facts. See also
+          <a href="https://world.openfoodfacts.org/terms-of-use" rel="noopener noreferrer">Open Food Facts’ terms</a>
+          and
+          <a href="https://world.openfoodfacts.org/privacy" rel="noopener noreferrer">privacy</a>.</li>
+      </ul>
+      <p>
+        When Health Connect is later enabled, data is read via the on-device platform API;
+        VictoryForm does not upload that data to its own cloud services in the planned flow.
+      </p>
+      <p>No advertising or analytics SDK is part of the reviewed app core for this policy.</p>
+    </section>
+
+    <section class="card" aria-labelledby="h-legal">
+      <h2 id="h-legal">9. Legal bases (draft)</h2>
+      <ul>
+        <li>Contract / service delivery for features you use in the app.</li>
+        <li>Consent for Health Connect connection and related reading (when enabled).</li>
+        <li>Possibly legitimate interests for limited technical operations — to be confirmed once the legal name is set.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="h-rights">
+      <h2 id="h-rights">10. Your rights</h2>
+      <p>
+        You may request access, rectification, erasure, restriction, portability (where applicable),
+        and lodge a complaint with a supervisory authority (in Norway: Datatilsynet).
+        Contact
+        <a href="mailto:victoryform.app@gmail.com">victoryform.app@gmail.com</a>.
+        You can also wipe local data in the app and revoke Health Connect permissions in the system.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-retention">
+      <h2 id="h-retention">11. Retention</h2>
+      <p>
+        Data remains on device until you delete it, uninstall the app, or soft-delete rules apply.
+        Backup files outside the app are under your control.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-changes">
+      <h2 id="h-changes">12. Changes</h2>
+      <p>
+        Material changes — including changes to the controller, contact details,
+        app name, or Health Connect features — will be posted at
+        <a href="https://victoryform-app.github.io/victoryform-privacy/">https://victoryform-app.github.io/victoryform-privacy/</a>
+        with a new date.
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        Not legal advice. The legal name is filled in locally before publishing.
+        Going public requires a separate approval.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

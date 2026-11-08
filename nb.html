@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personvernerklæring — VictoryForm</title>
+  <meta name="description" content="Personvernerklæring for VictoryForm, en lokal trenings- og kostholdsapp for Android." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <main id="innhold" class="wrap">
+    <header>
+      <nav class="lang" aria-label="Språk">
+        <a href="nb.html" aria-current="page" hreflang="nb">Norsk</a>
+        <a href="en.html" hreflang="en">English</a>
+      </nav>
+      <p class="brand">VictoryForm</p>
+      <h1>Personvernerklæring</h1>
+      <p class="meta">Sist oppdatert: 8. november 2026</p>
+      <p class="meta">Offentlig URL:
+        <a href="https://victoryform-app.github.io/victoryform-privacy/">https://victoryform-app.github.io/victoryform-privacy/</a>
+      </p>
+    </header>
+
+    <section class="card" aria-labelledby="h-controller">
+      <h2 id="h-controller">1. Behandlingsansvarlig</h2>
+      <p>
+        Behandlingsansvarlig er en privatperson:
+        Eman Inbumallan,
+        Norge.
+      </p>
+      <p>
+        Det er foreløpig ikke registrert selskap (AS) eller betalt organisasjonsform knyttet til appen.
+        Kontakt for personvern:
+        <a href="mailto:victoryform.app@gmail.com">victoryform.app@gmail.com</a>.
+      </p>
+      <p class="note">
+        Offentlig gateadresse er ikke påkrevd i denne erklæringen for nåværende oppsett.
+        Juridisk fullt navn fylles inn lokalt før publisering.
+        Hvis det senere opprettes firma, oppdateres denne erklæringen med ny behandlingsansvarlig og kontakt.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-what">
+      <h2 id="h-what">2. Hva appen er</h2>
+      <p>
+        VictoryForm er en lokal trenings- og kostholdsapp for Android.
+        Du kan registrere trening, manuell kroppsvekt og mat, og ta krypterte sikkerhetskopier.
+        Hoveddelen av dataene lagres på enheten din. Appen krever ikke konto.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-active">
+      <h2 id="h-active">3. Hva som er aktivt nå</h2>
+      <p>I den vanlige appversjonen som beskrives her er følgende aktivt:</p>
+      <ul>
+        <li>Lokal treningslogging (økter, øvelser, sett, manuelle aktiviteter).</li>
+        <li>Manuell kroppsvekt med lokal historikk og graf.</li>
+        <li>Matdagbok, egne matvarer/oppskrifter og næringsstoffer lagret lokalt.</li>
+        <li>Søk/skanning via Open Food Facts (se avsnitt 8).</li>
+        <li>Kryptert lokal sikkerhetskopi (.avena) som du selv eksporterer og gjenoppretter.</li>
+        <li>Sletting / wipe av lokale data i appen.</li>
+      </ul>
+      <p>
+        <strong>Health Connect Live-lesing og -import er ikke aktivert</strong> i den vanlige appversjonen
+        på tidspunktet for denne forberedelsen, selv om teknisk forberedelse finnes for senere milepæler
+        (se avsnitt 5).
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-data">
+      <h2 id="h-data">4. Hvilke data vi behandler</h2>
+      <div class="table-wrap" role="region" aria-label="Datakategorier" tabindex="0">
+        <table>
+          <thead>
+            <tr><th scope="col">Kategori</th><th scope="col">Eksempler</th><th scope="col">Lagring</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Profil</td>
+              <td>Navn (valgfritt), fødselsår, høyde, startvekt, mål, enheter</td>
+              <td>Lokalt på enheten</td>
+            </tr>
+            <tr>
+              <td>Trening</td>
+              <td>Økter, øvelser, sett, varighet, manuelle aktiviteter</td>
+              <td>Lokalt</td>
+            </tr>
+            <tr>
+              <td>Kroppsvekt</td>
+              <td>Manuelle registreringer og graf</td>
+              <td>Lokalt</td>
+            </tr>
+            <tr>
+              <td>Kosthold</td>
+              <td>Matdagbok, egne matvarer/oppskrifter, næringsstoffer</td>
+              <td>Lokalt</td>
+            </tr>
+            <tr>
+              <td>Health Connect (valgfritt, senere aktivering)</td>
+              <td>Treningsøkter, skritt og/eller vekt — kun etter tilkobling og tillatelse</td>
+              <td>Lesing via Health Connect; lagring kun der funksjonen er aktivert</td>
+            </tr>
+            <tr>
+              <td>Sikkerhetskopi</td>
+              <td>Kryptert eksportfil du selv lagrer eller deler</td>
+              <td>Fil du velger; midlertidige nøkler i sikker enhetslagring</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">
+        Android auto-backup er skrudd av. Soft-slettede oppføringer kan være skjult men fortsatt lagret
+        lokalt til de fjernes etter appens regler.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-hc">
+      <h2 id="h-hc">5. Health Connect — nå vs. senere</h2>
+      <p>Tilkobling er frivillig og krever ikke konto i VictoryForm.</p>
+
+      <h3>5.1 Status i vanlig app nå</h3>
+      <ul>
+        <li>Live-lesing, forhåndsvisning og import via Health Connect er <strong>ikke aktivert</strong> for vanlig produksjonsbruk.</li>
+        <li>Prod-manifestet deklarerer foreløpig kun <code>READ_EXERCISE</code>; <code>READ_STEPS</code> og <code>READ_WEIGHT</code> er ikke lagt til i produksjonsmanifestet ennå.</li>
+        <li>Appen ber ikke om skrivetilgang til Health Connect og ber ikke om <code>ACTIVITY_RECOGNITION</code>.</li>
+        <li>Puls, GPS-ruter og andre HC-typer forespørres ikke.</li>
+      </ul>
+
+      <h3>5.2 Forberedt for senere produksjonsmilepæler</h3>
+      <p>Når funksjoner aktiveres gjennom egne milepæler (og erklæringen oppdateres), kan VictoryForm be om <strong>lesetilgang</strong> til:</p>
+      <ul>
+        <li><strong>Treningsøkter (<code>READ_EXERCISE</code>)</strong> — vise tilgjengelige økter og, etter ditt aktive valg og bekreftelse, importere én økt om gangen. Ingen automatisk treningsimport ved appstart.</li>
+        <li><strong>Skritt (<code>READ_STEPS</code>)</strong> — vise dagens skrittotal automatisk etter at du har koblet til. Skritttall lagres ikke i appen.</li>
+        <li><strong>Kroppsvekt (<code>READ_WEIGHT</code>)</strong> — lese vektmålinger etter tilkobling for midlertidig visning. Automatisk lagring av HC-vekt i lokal historikk er <strong>ikke</strong> aktiv før en egen, separat godkjenning.</li>
+      </ul>
+      <p>
+        Du kan koble fra i appen og/eller trekke tilbake tillatelser i systemets Health Connect-innstillinger.
+        Da stopper ny lesing. Data du allerede har lagret lokalt slettes ikke automatisk ved frakobling.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-backup">
+      <h2 id="h-backup">6. Lokal lagring, backup og sletting</h2>
+      <ul>
+        <li>Vanlig appdata lagres lokalt på enheten.</li>
+        <li>Du kan eksportere en kryptert sikkerhetskopi og gjenopprette den.</li>
+        <li>Du kan slette lokale data via appens slettefunksjon.</li>
+        <li>Sikkerhetskopier du har lagret utenfor appen styres av deg.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="h-account">
+      <h2 id="h-account">7. Konto, sky og betalte tjenester</h2>
+      <p>
+        Konto/innlogging, sky-synkronisering, Premium-abonnement og tilsvarende nettjenester er
+        <strong>ikke</strong> aktive funksjoner i den vanlige appversjonen beskrevet her.
+        Denne erklæringen oppdateres før slik funksjon eventuelt aktiveres.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-third">
+      <h2 id="h-third">8. Overføring til servere og tredjeparter</h2>
+      <p>
+        Trenings-, vekt- og matdagbokdata sendes ikke til egne VictoryForm-servere i den aktive
+        funksjonaliteten beskrevet her.
+      </p>
+      <p><strong>Open Food Facts (når du søker eller skanner):</strong></p>
+      <ul>
+        <li>Strekkodesøk: strekkoden sendes til <code>world.openfoodfacts.org</code> (produkt-API) sammen med forespurte felt og en beskrivende User-Agent.</li>
+        <li>Tekstsøk: søketeksten sendes til <code>search.openfoodfacts.org</code> med parametre som side, sidestørrelse, språkpreferanser og ønskede produktfelt.</li>
+        <li>Forespørselen kan dermed inneholde det du skrev/skannet, tekniske HTTP-hoder (inkl. User-Agent) og vanlige nettverksmetadata (f.eks. IP-adresse hos mottaker).</li>
+        <li>Appen bruker ikke API-nøkkel for Open Food Facts. Se også
+          <a href="https://world.openfoodfacts.org/terms-of-use" rel="noopener noreferrer">Open Food Facts’ vilkår</a>
+          og
+          <a href="https://world.openfoodfacts.org/privacy" rel="noopener noreferrer">personvern</a>.</li>
+      </ul>
+      <p>
+        Når Health Connect senere aktiveres, leses data via plattform-API på enheten;
+        VictoryForm laster ikke opp HC-data til egne skytjenester i den planlagte flyten.
+      </p>
+      <p>Ingen annonse- eller analyse-SDK er del av den gjennomgåtte app-kjernen for denne erklæringen.</p>
+    </section>
+
+    <section class="card" aria-labelledby="h-legal">
+      <h2 id="h-legal">9. Rettslig grunnlag (utkast)</h2>
+      <ul>
+        <li>Avtale / tjenesteyting for funksjoner du bruker i appen.</li>
+        <li>Samtykke for Health Connect-tilkobling og tilhørende lesing (når aktivert).</li>
+        <li>Eventuelt berettiget interesse for begrenset teknisk drift — spesifiseres når juridisk navn er satt.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="h-rights">
+      <h2 id="h-rights">10. Dine rettigheter</h2>
+      <p>
+        Du kan be om innsyn, retting, sletting, begrensning, dataportabilitet (der det gjelder)
+        og klage til Datatilsynet.
+        Kontakt
+        <a href="mailto:victoryform.app@gmail.com">victoryform.app@gmail.com</a>.
+        Du kan også slette lokale data i appen og trekke tilbake Health Connect-tillatelser i systemet.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-retention">
+      <h2 id="h-retention">11. Lagringstid</h2>
+      <p>
+        Data lagres lokalt til du sletter dem, avinstallerer appen, eller til appens regler for soft-slett gjelder.
+        Sikkerhetskopier utenfor appen styres av deg.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="h-changes">
+      <h2 id="h-changes">12. Endringer</h2>
+      <p>
+        Ved materielle endringer — inkludert endring av behandlingsansvarlig, kontaktadresse,
+        appnavn eller Health Connect-funksjoner — oppdateres denne erklæringen på
+        <a href="https://victoryform-app.github.io/victoryform-privacy/">https://victoryform-app.github.io/victoryform-privacy/</a>
+        med ny dato.
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        Ikke juridisk rådgivning. Juridisk navn fylles inn lokalt før publisering.
+        Offentliggjøring krever separat godkjenning.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

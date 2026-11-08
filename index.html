@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personvern / Privacy — VictoryForm</title>
+  <meta name="description" content="Privacy policy for VictoryForm" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Prefer browser language; no analytics, no cookies.
+    (function () {
+      var lang = (navigator.language || "nb").toLowerCase();
+      var target = lang.indexOf("en") === 0 ? "en.html" : "nb.html";
+      if (location.search.indexOf("stay=1") === -1) {
+        location.replace(target);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#chooser">Skip to language choice</a>
+  <main id="chooser" class="wrap">
+    <header>
+      <p class="brand">VictoryForm</p>
+      <h1>Personvern / Privacy</h1>
+      <p class="meta">Velg språk / Choose language</p>
+    </header>
+    <div class="card">
+      <p class="lang">
+        <a href="nb.html" hreflang="nb">Norsk</a>
+        <a href="en.html" hreflang="en">English</a>
+      </p>
+      <p class="note">
+        Utkast. Sett inn juridisk navn før publisering.
+        Draft. Add the legal name before publishing.
+      </p>
+      <p class="note">
+        Kontakt / Contact:
+        <a href="mailto:victoryform.app@gmail.com">victoryform.app@gmail.com</a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>
