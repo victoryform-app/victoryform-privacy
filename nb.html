@@ -17,7 +17,7 @@
       </nav>
       <p class="brand">VictoryForm</p>
       <h1>Personvernerklæring</h1>
-      <p class="meta">Sist oppdatert: 8. november 2026</p>
+      <p class="meta">Sist oppdatert: 9. november 2026</p>
       <p class="meta">Offentlig URL:
         <a href="https://victoryform-app.github.io/victoryform-privacy/">https://victoryform-app.github.io/victoryform-privacy/</a>
       </p>
@@ -66,10 +66,12 @@
         <li>Valgfri <strong>skrittlesing</strong> via Health Connect (<code>READ_STEPS</code>) for å
           vise dagens skrittaggregat i Fremgang etter ditt samtykke (se avsnitt 5). Tallene
           lagres ikke permanent i denne versjonen.</li>
+        <li>Valgfri <strong>vektlesing</strong> via Health Connect (<code>READ_WEIGHT</code>) for å
+          vise nylige vektmålinger midlertidig i Fremgang etter ditt samtykke (se avsnitt 5).
+          HC-vekt lagres ikke automatisk i lokal vekthistorikk i denne versjonen.</li>
       </ul>
       <p>
-        Vektlesing fra Health Connect og automatisk treningsimport er
-        <strong>ikke</strong> aktivert i denne versjonen.
+        Automatisk treningsimport er <strong>ikke</strong> aktivert i denne versjonen.
       </p>
     </section>
 
@@ -93,8 +95,9 @@
             </tr>
             <tr>
               <td>Kroppsvekt</td>
-              <td>Manuelle registreringer og graf</td>
-              <td>Lokalt</td>
+              <td>Manuelle registreringer og graf. Eventuell HC-vekt vises midlertidig og holdes
+                adskilt fra manuell historikk.</td>
+              <td>Manuell: lokalt. HC-vekt: midlertidig visning (ikke automatisk historikk)</td>
             </tr>
             <tr>
               <td>Kosthold</td>
@@ -104,14 +107,19 @@
             <tr>
               <td>Health Connect (valgfritt)</td>
               <td>Treningsøkter du velger å importere (tidspunkt, varighet, aktivitetstype,
-                eventuell distanse, kilde-app). Dagens skrittaggregat vist midlertidig etter samtykke.
-                HC-vekt forespørres ikke i denne versjonen.</td>
-              <td>Lesing via Health Connect; importerte økter lagres lokalt; skritt vises uten permanent lagring</td>
+                eventuell distanse, kilde-app). Dagens skrittaggregat og nylige vektmålinger
+                vist midlertidig etter samtykke.</td>
+              <td>Lesing via Health Connect; importerte økter lagres lokalt; skritt/HC-vekt uten permanent lagring</td>
             </tr>
             <tr>
               <td>Sikkerhetskopi</td>
               <td>Kryptert eksportfil du selv lagrer eller deler</td>
               <td>Fil du velger; midlertidige nøkler i sikker enhetslagring</td>
+            </tr>
+            <tr>
+              <td>Frivillig konto (når aktivert)</td>
+              <td>E-postadresse for engangskode (OTP); Auth-bruker-ID og session hos leverandør</td>
+              <td>Supabase Auth i EU (Frankfurt). Trening/mat/vekt lastes ikke opp ved innlogging alene</td>
             </tr>
           </tbody>
         </table>
@@ -149,16 +157,24 @@
           i lokal historikk, backup eller sky i denne versjonen.</li>
         <li>Automatisk oppfriskning av skritt ved appstart/resume skjer bare etter at du har
           koblet til skritt; manglende tillatelse stopper lesing uten å åpne ny dialog.</li>
-        <li>Når skritt er aktivert, deklarerer prod-manifestet <code>READ_EXERCISE</code> og
-          <code>READ_STEPS</code> — ikke flere HC-tillatelser.</li>
+        <li>Etter eksplisitt vekt-tilkobling kan VictoryForm be om
+          <strong>lesetilgang til kroppsvekt</strong> (<code>READ_WEIGHT</code>). Appen leser
+          nylige målinger (inntil ca. 30 dager) via Health Connect og viser dem midlertidig
+          i Fremgang. HC-vekt holdes adskilt fra manuell vekthistorikk og lagres
+          <strong>ikke</strong> automatisk lokalt, i backup eller sky i denne versjonen.</li>
+        <li>Automatisk oppfriskning av HC-vekt ved appstart/resume skjer bare etter at du har
+          koblet til vekt; manglende tillatelse eller tom periode stopper lesing uten å åpne
+          ny dialog, og overskriver ikke manuelle registreringer.</li>
+        <li>Når skritt og vekt er aktivert, deklarerer prod-manifestet <code>READ_EXERCISE</code>,
+          <code>READ_STEPS</code> og <code>READ_WEIGHT</code> — ikke flere HC-tillatelser.</li>
         <li>Appen ber ikke om skrivetilgang til Health Connect og ber ikke om
           <code>ACTIVITY_RECOGNITION</code>.</li>
       </ul>
 
       <h3>5.2 Ikke aktivert ennå</h3>
       <ul>
-        <li><strong>Kroppsvekt (<code>READ_WEIGHT</code>)</strong> — ikke forespurt; automatisk lagring
-          av HC-vekt i lokal historikk er ikke aktiv.</li>
+        <li><strong>Automatisk lagring av HC-vekt</strong> i lokal vekthistorikk (persist/import) —
+          ikke aktiv; manuell vektregistrering fungerer som før.</li>
         <li><strong>Automatisk treningsimport</strong> (uten ditt valg/bekreftelse) — ikke aktiv.</li>
       </ul>
       <p>
@@ -180,9 +196,24 @@
     <section class="card" aria-labelledby="h-account">
       <h2 id="h-account">7. Konto, sky og betalte tjenester</h2>
       <p>
-        Konto/innlogging, sky-synkronisering, Premium-abonnement og tilsvarende nettjenester er
-        <strong>ikke</strong> aktive funksjoner i den vanlige appversjonen beskrevet her.
-        Denne erklæringen oppdateres før slik funksjon eventuelt aktiveres.
+        VictoryForm krever <strong>ikke</strong> konto. Du kan bruke trening, mat, vekt og lokal
+        <code>.avena</code>-backup uten å registrere deg.
+      </p>
+      <p>
+        Når frivillig konto er aktivert (først i separat QA-testbygging, senere eventuelt i vanlig app):
+      </p>
+      <ul>
+        <li>Innlogging skjer med <strong>e-post og engangskode</strong> (OTP), ikke passord lagret i appen.</li>
+        <li>E-postadressen behandles av <strong>Supabase Auth</strong> i EU-region Frankfurt for å sende
+          og verifisere koden, og for å vedlikeholde session.</li>
+        <li>Innlogging og utlogging <strong>sletter ikke</strong> lokale trenings-, mat-, vekt- eller profildata.</li>
+        <li>Innlogging <strong>laster ikke automatisk opp</strong> gjestedata til sky. Synkronisering skjer
+          først etter en egen, eksplisitt «ta med lokale data»-handling (når den funksjonen er aktivert).</li>
+        <li>Kryptert lokal <code>.avena</code>-backup forblir uavhengig av konto.</li>
+      </ul>
+      <p>
+        Premium-abonnement og betalte nettjenester er <strong>ikke</strong> aktive i denne erklæringen.
+        Sky-speil av treningsdata er ikke aktivert i den vanlige appversjonen beskrevet her.
       </p>
     </section>
 

@@ -17,7 +17,7 @@
       </nav>
       <p class="brand">VictoryForm</p>
       <h1>Privacy Policy</h1>
-      <p class="meta">Last updated: 8 November 2026</p>
+      <p class="meta">Last updated: 9 November 2026</p>
       <p class="meta">Public URL:
         <a href="https://victoryform-app.github.io/victoryform-privacy/">https://victoryform-app.github.io/victoryform-privacy/</a>
       </p>
@@ -66,10 +66,12 @@
         <li>Optional <strong>steps reading</strong> via Health Connect (<code>READ_STEPS</code>) to
           show today’s step aggregate on Progress after your consent (see section 5). Totals are
           not stored permanently in this version.</li>
+        <li>Optional <strong>weight reading</strong> via Health Connect (<code>READ_WEIGHT</code>) to
+          show recent weight samples temporarily on Progress after your consent (see section 5).
+          HC weight is not saved automatically to local weight history in this version.</li>
       </ul>
       <p>
-        Health Connect weight reading and automatic workout import are
-        <strong>not</strong> enabled in this version.
+        Automatic workout import is <strong>not</strong> enabled in this version.
       </p>
     </section>
 
@@ -93,8 +95,9 @@
             </tr>
             <tr>
               <td>Body weight</td>
-              <td>Manual entries and chart</td>
-              <td>On device</td>
+              <td>Manual entries and chart. Any HC weight is shown temporarily and kept
+                separate from manual history.</td>
+              <td>Manual: on device. HC weight: temporary display (not automatic history)</td>
             </tr>
             <tr>
               <td>Nutrition</td>
@@ -104,14 +107,19 @@
             <tr>
               <td>Health Connect (optional)</td>
               <td>Workout sessions you choose to import (time, duration, activity type,
-                optional distance, source app). Today’s step aggregate shown temporarily after consent.
-                HC weight is not requested in this version.</td>
-              <td>Read via Health Connect; imported sessions stored locally; steps shown without permanent storage</td>
+                optional distance, source app). Today’s step aggregate and recent weight samples
+                shown temporarily after consent.</td>
+              <td>Read via Health Connect; imported sessions stored locally; steps/HC weight without permanent storage</td>
             </tr>
             <tr>
               <td>Backup</td>
               <td>Encrypted export file you choose to save or share</td>
               <td>File you choose; temporary keys in secure device storage</td>
+            </tr>
+            <tr>
+              <td>Voluntary account (when enabled)</td>
+              <td>Email address for one-time codes (OTP); auth user id and session at the provider</td>
+              <td>Supabase Auth in the EU (Frankfurt). Workouts/food/weight are not uploaded by sign-in alone</td>
             </tr>
           </tbody>
         </table>
@@ -150,16 +158,26 @@
           history, backup, or cloud in this version.</li>
         <li>Automatic steps refresh on app open/resume runs only after you have connected
           steps; missing permission stops reading without opening a new dialog.</li>
-        <li>When steps are enabled, the production manifest declares <code>READ_EXERCISE</code>
-          and <code>READ_STEPS</code> — no other HC permissions.</li>
+        <li>After you explicitly connect weight, VictoryForm may request
+          <strong>read access to body weight</strong> (<code>READ_WEIGHT</code>). The app reads
+          recent samples (up to about 30 days) via Health Connect and shows them temporarily
+          on Progress. HC weight is kept separate from manual weight history and is
+          <strong>not</strong> saved automatically locally, in backup, or in the cloud in this
+          version.</li>
+        <li>Automatic HC weight refresh on app open/resume runs only after you have connected
+          weight; missing permission or an empty period stops reading without opening a new
+          dialog and does not overwrite manual entries.</li>
+        <li>When steps and weight are enabled, the production manifest declares
+          <code>READ_EXERCISE</code>, <code>READ_STEPS</code>, and <code>READ_WEIGHT</code> —
+          no other HC permissions.</li>
         <li>The app does not request write access to Health Connect and does not request
           <code>ACTIVITY_RECOGNITION</code>.</li>
       </ul>
 
       <h3>5.2 Not enabled yet</h3>
       <ul>
-        <li><strong>Body weight (<code>READ_WEIGHT</code>)</strong> — not requested; automatic saving
-          of HC weight into local history is not active.</li>
+        <li><strong>Automatic saving of HC weight</strong> into local weight history
+          (persist/import) — not active; manual weight logging works as before.</li>
         <li><strong>Automatic workout import</strong> (without your selection/confirmation) — not active.</li>
       </ul>
       <p>
@@ -181,9 +199,25 @@
     <section class="card" aria-labelledby="h-account">
       <h2 id="h-account">7. Account, cloud, and paid services</h2>
       <p>
-        Account sign-in, cloud sync, Premium subscriptions, and similar networked services are
-        <strong>not</strong> active features in the regular app version described here.
-        This policy will be updated before any such feature is enabled.
+        VictoryForm does <strong>not</strong> require an account. You can use workouts, food, weight,
+        and local <code>.avena</code> backup without signing up.
+      </p>
+      <p>
+        When a voluntary account is enabled (first in a separate QA test build, later possibly in the
+        regular app):
+      </p>
+      <ul>
+        <li>Sign-in uses <strong>email and a one-time code</strong> (OTP), not a password stored in the app.</li>
+        <li>Your email is processed by <strong>Supabase Auth</strong> in the EU Frankfurt region to send
+          and verify the code and maintain a session.</li>
+        <li>Sign-in and sign-out do <strong>not</strong> delete local workout, food, weight, or profile data.</li>
+        <li>Sign-in does <strong>not</strong> automatically upload guest data to the cloud. Sync starts only
+          after a separate, explicit “bring local data” step (when that feature is enabled).</li>
+        <li>Encrypted local <code>.avena</code> backup remains independent of the account.</li>
+      </ul>
+      <p>
+        Premium subscriptions and paid network services are <strong>not</strong> active in this policy.
+        Cloud mirroring of training data is not enabled in the regular app version described here.
       </p>
     </section>
 
