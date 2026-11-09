@@ -63,9 +63,12 @@
         <li>Valgfri tilkobling til Health Connect for <strong>lesing av treningsøkter</strong>
           (<code>READ_EXERCISE</code>) og <strong>manuell import</strong> av én valgt økt om gangen
           (se avsnitt 5).</li>
+        <li>Valgfri <strong>skrittlesing</strong> via Health Connect (<code>READ_STEPS</code>) for å
+          vise dagens skrittaggregat i Fremgang etter ditt samtykke (se avsnitt 5). Tallene
+          lagres ikke permanent i denne versjonen.</li>
       </ul>
       <p>
-        Skrittlesing, vektlesing fra Health Connect og automatisk treningsimport er
+        Vektlesing fra Health Connect og automatisk treningsimport er
         <strong>ikke</strong> aktivert i denne versjonen.
       </p>
     </section>
@@ -101,8 +104,9 @@
             <tr>
               <td>Health Connect (valgfritt)</td>
               <td>Treningsøkter du velger å importere (tidspunkt, varighet, aktivitetstype,
-                eventuell distanse, kilde-app). Skritt og HC-vekt forespørres ikke i denne versjonen.</td>
-              <td>Lesing via Health Connect; importerte økter lagres lokalt i treningshistorikk</td>
+                eventuell distanse, kilde-app). Dagens skrittaggregat vist midlertidig etter samtykke.
+                HC-vekt forespørres ikke i denne versjonen.</td>
+              <td>Lesing via Health Connect; importerte økter lagres lokalt; skritt vises uten permanent lagring</td>
             </tr>
             <tr>
               <td>Sikkerhetskopi</td>
@@ -137,14 +141,22 @@
           for deduplisering, og eventuelt pakkenavn for kilde-appen (f.eks. treningsappen
           økten kommer fra). Appen finner ikke opp sett/reps, og ber ikke om puls eller GPS-rute.</li>
         <li>Samme økt importeres ikke på nytt som duplikat (dedup via ekstern identifikator).</li>
-        <li>Prod-manifestet deklarerer foreløpig kun <code>READ_EXERCISE</code>.</li>
+        <li>Etter eksplisitt skritt-tilkobling kan VictoryForm be om
+          <strong>lesetilgang til skritt</strong> (<code>READ_STEPS</code>). Appen leser
+          dagens aggregat via Health Connect (<code>COUNT_TOTAL</code> / tilsvarende
+          plattformaggregat) for å unngå dobbelttelling fra flere kilder. Skrittene
+          vises i Fremgang og i midlertidig minne; de lagres <strong>ikke</strong> permanent
+          i lokal historikk, backup eller sky i denne versjonen.</li>
+        <li>Automatisk oppfriskning av skritt ved appstart/resume skjer bare etter at du har
+          koblet til skritt; manglende tillatelse stopper lesing uten å åpne ny dialog.</li>
+        <li>Når skritt er aktivert, deklarerer prod-manifestet <code>READ_EXERCISE</code> og
+          <code>READ_STEPS</code> — ikke flere HC-tillatelser.</li>
         <li>Appen ber ikke om skrivetilgang til Health Connect og ber ikke om
           <code>ACTIVITY_RECOGNITION</code>.</li>
       </ul>
 
       <h3>5.2 Ikke aktivert ennå</h3>
       <ul>
-        <li><strong>Skritt (<code>READ_STEPS</code>)</strong> — ikke forespurt i denne versjonen.</li>
         <li><strong>Kroppsvekt (<code>READ_WEIGHT</code>)</strong> — ikke forespurt; automatisk lagring
           av HC-vekt i lokal historikk er ikke aktiv.</li>
         <li><strong>Automatisk treningsimport</strong> (uten ditt valg/bekreftelse) — ikke aktiv.</li>

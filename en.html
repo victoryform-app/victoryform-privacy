@@ -63,9 +63,12 @@
         <li>Optional Health Connect connection for <strong>reading workout sessions</strong>
           (<code>READ_EXERCISE</code>) and <strong>manual import</strong> of one selected session
           at a time (see section 5).</li>
+        <li>Optional <strong>steps reading</strong> via Health Connect (<code>READ_STEPS</code>) to
+          show today’s step aggregate on Progress after your consent (see section 5). Totals are
+          not stored permanently in this version.</li>
       </ul>
       <p>
-        Steps reading, Health Connect weight reading, and automatic workout import are
+        Health Connect weight reading and automatic workout import are
         <strong>not</strong> enabled in this version.
       </p>
     </section>
@@ -101,8 +104,9 @@
             <tr>
               <td>Health Connect (optional)</td>
               <td>Workout sessions you choose to import (time, duration, activity type,
-                optional distance, source app). Steps and HC weight are not requested in this version.</td>
-              <td>Read via Health Connect; imported sessions stored locally in workout history</td>
+                optional distance, source app). Today’s step aggregate shown temporarily after consent.
+                HC weight is not requested in this version.</td>
+              <td>Read via Health Connect; imported sessions stored locally; steps shown without permanent storage</td>
             </tr>
             <tr>
               <td>Backup</td>
@@ -138,14 +142,22 @@
           the session came from). The app does not invent sets/reps and does not request
           heart rate or a GPS route.</li>
         <li>The same session is not imported again as a duplicate (dedup via external identifier).</li>
-        <li>The production manifest currently declares only <code>READ_EXERCISE</code>.</li>
+        <li>After you explicitly connect steps, VictoryForm may request
+          <strong>read access to steps</strong> (<code>READ_STEPS</code>). The app reads
+          today’s aggregate via Health Connect (<code>COUNT_TOTAL</code> / equivalent platform
+          aggregate) to avoid double-counting across sources. Steps are shown on Progress and
+          held in temporary memory; they are <strong>not</strong> stored permanently in local
+          history, backup, or cloud in this version.</li>
+        <li>Automatic steps refresh on app open/resume runs only after you have connected
+          steps; missing permission stops reading without opening a new dialog.</li>
+        <li>When steps are enabled, the production manifest declares <code>READ_EXERCISE</code>
+          and <code>READ_STEPS</code> — no other HC permissions.</li>
         <li>The app does not request write access to Health Connect and does not request
           <code>ACTIVITY_RECOGNITION</code>.</li>
       </ul>
 
       <h3>5.2 Not enabled yet</h3>
       <ul>
-        <li><strong>Steps (<code>READ_STEPS</code>)</strong> — not requested in this version.</li>
         <li><strong>Body weight (<code>READ_WEIGHT</code>)</strong> — not requested; automatic saving
           of HC weight into local history is not active.</li>
         <li><strong>Automatic workout import</strong> (without your selection/confirmation) — not active.</li>
